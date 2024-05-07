@@ -1,10 +1,21 @@
+public class SimpleCode {
 
-public class Sample_project {
     public static void main(String[] args) {
         int a = 5;
         int b = 0;
-        int c = a / b; // This line will cause a division by zero error exception
-        System.out.println("Result: " + z);
-        
+
+        try {
+            int z = divide(a, b);
+            System.out.println("The result is " + z);
+        } catch (ArithmeticException e) {
+            System.err.println("Division by zero error: " + e.getMessage());
+        }
+    }
+
+    private static int divide(int dividend, int divisor) {
+        if (divisor == 0) {
+            throw new ArithmeticException("Division by zero");
+        }
+        return dividend / divisor;
     }
 }
